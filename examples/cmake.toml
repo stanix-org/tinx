@@ -1,0 +1,26 @@
+[[build_systems]]
+name = "cmake"
+build_dependencies = ["tool-cmake"]
+configure = [
+	"cmake",
+	"-S",
+	"${source_dir}",
+	"-B",
+	"${build_dir}",
+	"-DCMAKE_INSTALL_PREFIX=${prefix}"
+	"--toolchain=${top}/toolchain.cmake",
+]
+
+build = [
+	"cmake",
+	"--build",
+	"${build_dir}",
+	"--parrallelism=${parrallelism}",
+]
+
+install = [
+	"DESTDIR=${destdir}",
+	"cmake",
+	"--install",
+	"${build_dir}",
+]

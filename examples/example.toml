@@ -1,0 +1,32 @@
+# example
+
+[[sources]]
+name = "sdl3"
+version = "3.4.10"
+git = "https://github.com/libsdl-org/SDL"
+tag = "release-3.4.10"
+patches = ["sources/sdl3/1-add-stanix-support.patch"]
+
+[[packages]]
+name = "sdl3"
+description = """
+Simple directmedia layer
+"""
+source = "sdl3"
+version = "3.4.10"
+website = "https://libsdl.org"
+dependencies = ["stanix-base"]
+build_dependencies = ["tool-stanix-toolchain"]
+build_system = "cmake"
+configure = [
+	"-DSDL_GPU=OFF", 
+	"-DSDL_CAMERA=OFF",
+	"-DSDL_HAPTIC=OFF",
+	"-DSDL_HIDAPI=OFF",
+	"-DSDL_POWER=OFF",
+	"-DSDL_SENSOR=OFF",
+	"-DSDL_DIALOG=OFF",
+	"-DSDL_TESTS=OFF",
+	"-DSDL_ALSA=OFF",
+	"-DSDL_JACK=OFF",
+]

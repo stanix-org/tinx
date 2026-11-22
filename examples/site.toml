@@ -1,0 +1,21 @@
+[site]
+name = "example"
+description = "example site"
+package_manager = "xbps"
+author = {name = "Tayoky", email = "tayoky4848+tinx@gmail.com"}
+
+repositories = [
+	{name = "stable", url = "https://example.com/stable"},
+	{name = "nigthly", url = "https://example.com/nigthly"},
+]
+
+imports = [
+	"cmake.toml",
+	"example.toml",
+]
+
+options = [
+	{name = "prefix", default = "/usr/local"},
+	{name = "arch",   default = "x86_64"},
+	{name = "host",   default = "${arch}-linux-gnu"},
+]
