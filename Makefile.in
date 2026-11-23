@@ -1,0 +1,11 @@
+TMAKE_DIR = $(SRCDIR)/make
+include $(TMAKE_DIR)/tmake-init.mk
+
+PACKAGE = tinx
+VERSION := $(shell git -C $(SRCDIR) describe --tags --always 2>/dev/null || echo unknown)
+SRCS = $(wildcard $(SRCDIR)/src/*.c)
+CFLAGS += -I$(SRCDIR)/include
+CFLAGS += -DVERSION='"$(VERSION)"'
+LDFLAGS += -ltoml -lutils
+
+include $(TMAKE_DIR)/tmake-prog.mk

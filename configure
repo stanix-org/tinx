@@ -1,0 +1,24 @@
+#!/bin/sh
+. "$(dirname "$0" )/tconf.sh"
+
+tconf_init "$@"
+
+tconf_search_cc "$HOST"
+tconf_require "C compiler" "$CC"
+tconf_find_os
+
+if tconf_check_library "$CC" "android-support" ; then
+	LDFLAGS="$LDFLAGS -landroid-support"
+fi
+
+if ! tconf_check_library "$CC" "utils" ; then
+	tconf_print "libutils is required, download it at https://github.com/stanix-org/libutils"
+fi
+
+if ! tconf_check_library "$CC" "toml" ; then
+	tconf_print "libtoml is required, download it at https://github.com/stanix-org/libtoml"
+fi
+
+tconf_gen_makefiles "$SRCDIR/Makefile.in"
+
+tconf_fini

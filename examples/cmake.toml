@@ -7,7 +7,7 @@ configure = [
 	"${source_dir}",
 	"-B",
 	"${build_dir}",
-	"-DCMAKE_INSTALL_PREFIX=${prefix}"
+	"-DCMAKE_INSTALL_PREFIX=${prefix}",
 	"--toolchain=${top}/toolchain.cmake",
 ]
 
